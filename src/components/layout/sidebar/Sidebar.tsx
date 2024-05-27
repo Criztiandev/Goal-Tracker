@@ -1,14 +1,24 @@
+"use client";
+
 import React, { HTMLAttributes } from "react";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "../../ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const path = usePathname();
+
   return (
     <aside className="absolute top-0 left-0 w-[16rem] h-screen pt-[80px] border  p-4 flex flex-col ">
       <nav className="flex flex-col justify-between flex-1 ">
         <ul className="flex flex-col gap-4">
-          <ListItem active>Goals</ListItem>
+          <ListItem href="/ideas" active={path.includes("ideas")}>
+            Ideas
+          </ListItem>
+          <ListItem href="/goals" active={path.includes("goals")}>
+            Goals
+          </ListItem>
         </ul>
       </nav>
 
@@ -22,11 +32,11 @@ const Sidebar = () => {
 export default Sidebar;
 
 interface ListItemProps extends HTMLAttributes<HTMLLinkElement> {
-  path?: string;
+  href?: string;
   active?: boolean;
 }
 
-const ListItem = ({ children, active, path = "/" }: ListItemProps) => {
+const ListItem = ({ children, active, href = "/" }: ListItemProps) => {
   return (
     <li>
       <Link
@@ -37,7 +47,7 @@ const ListItem = ({ children, active, path = "/" }: ListItemProps) => {
             className: "justify-start",
           })
         )}
-        href={path}>
+        href={href}>
         {children}
       </Link>
     </li>

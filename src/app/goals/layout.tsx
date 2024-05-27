@@ -1,8 +1,9 @@
+import GoalTab from "@/components/layout/tabs/SheetTab";
 import Navbar from "@/components/layout/Navbar";
-import Sidebar from "@/components/layout/sidebar/Sidebar";
 
 import { cn } from "@/lib/utils";
 import { FC, HTMLAttributes, ReactNode } from "react";
+import Sidebar from "@/components/layout/sidebar/Sidebar";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;

@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 const Navbar = () => {
   return <div className="p-4 border w-full ">Navbar</div>;
